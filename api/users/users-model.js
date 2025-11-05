@@ -68,7 +68,6 @@ where users.user_id = 1;
 }
 
 
-
 function findById(user_id) {
   /**
     You will need to join two tables.
@@ -80,7 +79,15 @@ function findById(user_id) {
       "role_name": "instructor"
     }
    */
+  return db('users')
+    .join('roles', 'users.role_id', 'roles.role_id')
+    .select('user_id', 'username', 'password', 'role_name')
+    .where('users.user_id', user_id)
+    .first()
 }
+
+
+
 
 /**
   Creating a user requires a single insert (into users) if the role record with the given
