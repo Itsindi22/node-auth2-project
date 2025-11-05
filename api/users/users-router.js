@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Users = require("./users-model.js");
 const { restricted, only } = require("../auth/auth-middleware.js");
+console.log('hey')
 
 /**
   [GET] /api/users
@@ -18,6 +19,7 @@ const { restricted, only } = require("../auth/auth-middleware.js");
   ]
  */
 router.get("/", restricted, (req, res, next) => { // done for you
+  console.log('')
   Users.find()
     .then(users => {
       res.json(users);
